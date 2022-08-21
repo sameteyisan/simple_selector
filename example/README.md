@@ -23,7 +23,7 @@ SimpleSelector(
     Icon(Icons.lock),
     Icon(Icons.lock_open),
   ],
-    duration: const  Duration(milliseconds: 300),
+  duration: const  Duration(milliseconds: 300),
 	curve: Curves.easeInOutCubic,
 	onChanged: (index) {
 	  print(index);
@@ -31,7 +31,7 @@ SimpleSelector(
 );
 ```
 
- -  *items*  `The items to be used in the selection are entered here.`
+ - *items*  `The items to be used in the selection are entered here.`
  - *duration*  `Use this to set the animation duration.`
  - *curve*  `Use this to change the animation curve type.`
  - *itemExtent*  `Use this to specify the width of the items.`
