@@ -6,11 +6,11 @@ class SimpleSelector extends StatefulWidget {
   const SimpleSelector({
     Key? key,
     required this.items,
-    this.duration = const Duration(milliseconds: 500),
-    this.curve = Curves.easeInOut,
+    this.duration = const Duration(milliseconds: 300),
+    this.curve,
     this.itemExtent = 50,
     this.height = 25,
-    this.indicatorColor = const Color(0xffD2D8DD),
+    this.indicatorColor = const Color(0xff2980b9),
     this.backgroundColor = const Color(0xff1D1F22),
     this.radius = 12,
     this.itemPadding,
@@ -18,22 +18,46 @@ class SimpleSelector extends StatefulWidget {
     this.onChanged,
     this.animation = true,
     this.itemAlign,
-    this.axis,
   }) : super(key: key);
+
+  /// The items to be used in the selection are entered here.
   final List<Widget> items;
+
+  /// Use this to set the animation duration.
   final Duration duration;
-  final Curve curve;
+
+  /// Use this to change the animation curve type.
+  final Curve? curve;
+
+  /// Use this to specify the width of the items.
   final double itemExtent;
+
+  /// Use this to specify the height of the items.
   final double height;
+
+  /// Use this to change the indicator color.
   final Color indicatorColor;
+
+  /// Use this to change the background color.
   final Color backgroundColor;
+
+  /// Use this to change the radius.
   final double radius;
+
+  /// Use this to give padding to each of the items. This way you can leave space between items.
   final EdgeInsets? itemPadding;
+
+  /// Use this to organize the space occupied by items horizontally.
   final MainAxisSize? mainAxisSize;
-  final Function(int index)? onChanged;
+
+  /// Use this to eliminate the animation transition altogether.
   final bool animation;
+
+  /// If you want to change where the items are aligned use this.
   final Alignment? itemAlign;
-  final Axis? axis;
+
+  /// This function is used to see the selected index.
+  final Function(int index)? onChanged;
 
   @override
   State<SimpleSelector> createState() => _MyaAckageState();
@@ -57,7 +81,7 @@ class _MyaAckageState extends State<SimpleSelector> {
             AnimatedSlide(
               offset: offset,
               duration: widget.animation ? widget.duration : Duration.zero,
-              curve: widget.curve,
+              curve: widget.curve ?? Curves.easeInOut,
               child: Container(
                 width: widget.itemExtent,
                 height: widget.height,

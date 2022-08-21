@@ -1,7 +1,7 @@
 name: simple_selector
-description: A new Flutter package project.
+description: A simple and customizable selector widget with animated transition.
 version: 0.0.1
-homepage:
+homepage: https://github.com/sameteyisan/simple_selector.git
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

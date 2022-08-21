@@ -1,44 +1,44 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## Simple Selector
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+A simple and customizable selector widget with animated transition.
 
 ```dart
-const like = 'sample';
+SimpleSelector(
+      items: [
+        Icon(Icons.lock),
+        Icon(Icons.lock_open),
+      ],
+     );
 ```
 
-## Additional information
+That's it. ☺️ You can only use it by giving an ``items``.
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
-# simple_selector
-# simple_selector
-# simple_selector
-# simple_selector
-# simple_selector
+```dart
+SimpleSelector(
+      items: [
+        Icon(Icons.lock),
+        Icon(Icons.lock_open),
+      ],
+    duration: const  Duration(milliseconds: 300),
+	curve: Curves.easeInOutCubic,
+	onChanged: (index) {
+		print(index);
+	},
+  );
+```
+
+ -  *items*  `The items to be used in the selection are entered here.`
+ - *duration*  `Use this to set the animation duration.`
+ - *curve*  `Use this to change the animation curve type.`
+ - *itemExtent*  `Use this to specify the width of the items.`
+ - *height*  `Use this to specify the height of the items.`
+ - *indicatorColor*  `Use this to change the indicator color.`
+ - *backgroundColor*  `Use this to change the background color.`
+ - *radius*  `Use this to change the radius.`
+ - *itemPadding*  `Use this to give padding to each of the items. This way you can leave space between items.`
+ - *mainAxisSize*  `Use this to organize the space occupied by items horizontally.`
+ - *animation*  `Use this to eliminate the animation transition altogether.`
+ - *itemAlign*  `If you want to change where the items are aligned use this.`
+ - *onChanged*  `This function is used to see the selected index.`
