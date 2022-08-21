@@ -82,7 +82,8 @@ class _MyaAckageState extends State<SimpleSelector> {
               offset: offset,
               duration: widget.animation ? widget.duration : Duration.zero,
               curve: widget.curve ?? Curves.easeInOut,
-              child: Container(
+              child: AnimatedContainer(
+                duration: widget.animation ? widget.duration : Duration.zero,
                 width: widget.itemExtent,
                 height: widget.height,
                 decoration: BoxDecoration(
