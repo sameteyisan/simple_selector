@@ -6,27 +6,27 @@ A simple and customizable selector widget with animated transition.
 
 ```dart
 SimpleSelector(
-      items: [
-        Icon(Icons.lock),
-        Icon(Icons.lock_open),
-      ],
-    );
+  items: [
+    Icon(Icons.lock),
+    Icon(Icons.lock_open),
+  ],
+);
 ```
 
 That's it. ☺️ You can only use it by giving an ``items``.
 
 ```dart
 SimpleSelector(
-      items: [
-        Icon(Icons.lock),
-        Icon(Icons.lock_open),
-      ],
-    duration: const  Duration(milliseconds: 300),
-	  curve: Curves.easeInOutCubic,
-	  onChanged: (index) {
-		  print(index);
-	  },
-  );
+  items: [
+    Icon(Icons.lock),
+    Icon(Icons.lock_open),
+  ],
+  duration: const  Duration(milliseconds: 300),
+	curve: Curves.easeInOutCubic,
+	onChanged: (index) {
+	  print(index);
+	},
+);
 ```
 
  -  *items*  `The items to be used in the selection are entered here.`
