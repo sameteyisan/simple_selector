@@ -1,6 +1,6 @@
 ## Simple Selector
 
-
+![showcase](https://github.com/sameteyisan/simple_selector/blob/main/sample.gif)
 
 A simple and customizable selector widget with animated transition.
 
