@@ -6,3 +6,6 @@
 
 * Readme updated.
 
+## 1.0.2
+
+* Example added.

@@ -1,16 +1,46 @@
-# simple_selector_example
+## Simple Selector Example
 
-A new Flutter project.
+![showcase](https://github.com/sameteyisan/simple_selector/blob/main/sample.gif)
 
-## Getting Started
+![showcase](https://github.com/sameteyisan/simple_selector/blob/main/sample_2.gif)
 
-This project is a starting point for a Flutter application.
+A simple and customizable selector widget with animated transition.
 
-A few resources to get you started if this is your first Flutter project:
+```dart
+SimpleSelector(
+  items: [
+    Icon(Icons.lock),
+    Icon(Icons.lock_open),
+  ],
+);
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+That's it. ☺️ You can only use it by giving an ``items``.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+SimpleSelector(
+  items: [
+    Icon(Icons.lock),
+    Icon(Icons.lock_open),
+  ],
+    duration: const  Duration(milliseconds: 300),
+	curve: Curves.easeInOutCubic,
+	onChanged: (index) {
+	  print(index);
+	},
+);
+```
+
+ -  *items*  `The items to be used in the selection are entered here.`
+ - *duration*  `Use this to set the animation duration.`
+ - *curve*  `Use this to change the animation curve type.`
+ - *itemExtent*  `Use this to specify the width of the items.`
+ - *height*  `Use this to specify the height of the items.`
+ - *indicatorColor*  `Use this to change the indicator color.`
+ - *backgroundColor*  `Use this to change the background color.`
+ - *radius*  `Use this to change the radius.`
+ - *itemPadding*  `Use this to give padding to each of the items. This way you can leave space between items.`
+ - *mainAxisSize*  `Use this to organize the space occupied by items horizontally.`
+ - *animation*  `Use this to eliminate the animation transition altogether.`
+ - *itemAlign*  `If you want to change where the items are aligned use this.`
+ - *onChanged*  `This function is used to see the selected index.`
