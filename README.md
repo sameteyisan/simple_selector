@@ -10,7 +10,7 @@ SimpleSelector(
         Icon(Icons.lock),
         Icon(Icons.lock_open),
       ],
-     );
+    );
 ```
 
 That's it. ☺️ You can only use it by giving an ``items``.
@@ -22,10 +22,10 @@ SimpleSelector(
         Icon(Icons.lock_open),
       ],
     duration: const  Duration(milliseconds: 300),
-	curve: Curves.easeInOutCubic,
-	onChanged: (index) {
-		print(index);
-	},
+	  curve: Curves.easeInOutCubic,
+	  onChanged: (index) {
+		  print(index);
+	  },
   );
 ```
 
