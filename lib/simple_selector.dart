@@ -6,6 +6,7 @@ class SimpleSelector extends StatefulWidget {
   const SimpleSelector({
     Key? key,
     required this.items,
+    this.initialIndex = 0,
     this.duration = const Duration(milliseconds: 300),
     this.curve,
     this.itemExtent = 50,
@@ -22,6 +23,9 @@ class SimpleSelector extends StatefulWidget {
 
   /// The items to be used in the selection are entered here.
   final List<Widget> items;
+
+  /// Use this to change your starting item
+  final int initialIndex;
 
   /// Use this to set the animation duration.
   final Duration duration;
@@ -60,11 +64,17 @@ class SimpleSelector extends StatefulWidget {
   final Function(int index)? onChanged;
 
   @override
-  State<SimpleSelector> createState() => _MyaAckageState();
+  State<SimpleSelector> createState() => _SimpleSelectorState();
 }
 
-class _MyaAckageState extends State<SimpleSelector> {
-  var offset = Offset.zero;
+class _SimpleSelectorState extends State<SimpleSelector> {
+  late Offset offset;
+
+  @override
+  void initState() {
+    offset = Offset(widget.initialIndex.toDouble(), 0);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +125,12 @@ class _MyaAckageState extends State<SimpleSelector> {
                               borderRadius:
                                   BorderRadius.circular(widget.radius),
                               onTap: () {
-                                if (offset.dx == kv.key.toDouble()) {
+                                final idxDouble = kv.key.toDouble();
+                                if (offset.dx == idxDouble) {
                                   return;
                                 }
                                 setState(() {
-                                  offset = Offset(kv.key.toDouble(), 0);
+                                  offset = Offset(idxDouble, 0);
                                 });
                                 if (widget.onChanged != null) {
                                   widget.onChanged!(kv.key);
