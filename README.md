@@ -32,6 +32,7 @@ SimpleSelector(
 ```
 
  - *items*  `The items to be used in the selection are entered here.`
+ - *initialIndex*  `you can use this to set the initial index.`
  - *duration*  `Use this to set the animation duration.`
  - *curve*  `Use this to change the animation curve type.`
  - *itemExtent*  `Use this to specify the width of the items.`

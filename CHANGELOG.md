@@ -13,3 +13,11 @@
 ## 1.0.3
 
 * Example updated.
+
+## 1.0.4
+
+* Initial index implemented.
+
+## 1.0.5
+
+* Readme updated.
