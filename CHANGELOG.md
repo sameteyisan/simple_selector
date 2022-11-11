@@ -24,4 +24,4 @@
 
 ## 1.0.6
 
-* Selected index came instead of initial index. Increased ease of use.
+* Selected index came instead of initial index. Dense added. Increased ease of use.
