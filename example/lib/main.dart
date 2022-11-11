@@ -29,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selected = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("Simple Selector Example"),
         centerTitle: true,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SimpleSelector(
+              radius: 0,
+              selectedIndex: selected,
               items: const [
                 Icon(
                   Icons.lock,
@@ -51,9 +56,37 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.white,
                 ),
               ],
-              indicatorColor: selected == 0 ? Colors.red : Colors.green,
+              indicatorColor: selected == 0
+                  ? const Color(0xff2980b9)
+                  : const Color(0xff2980b9).withOpacity(0.5),
               itemExtent: 60,
-              height: 30,
+              height: 35,
+              onChanged: (selectedIndex) {
+                setState(() {
+                  selected = selectedIndex;
+                });
+              },
+            ),
+            const SizedBox(height: 32),
+            SimpleSelector(
+              selectedIndex: selected,
+              dense: true,
+              radius: 0,
+              items: const [
+                Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
+                Icon(
+                  Icons.lock_open,
+                  color: Colors.white,
+                ),
+              ],
+              indicatorColor: selected == 0
+                  ? const Color(0xff2980b9)
+                  : const Color(0xff2980b9).withOpacity(0.6),
+              itemExtent: 60,
+              height: 35,
               onChanged: (selectedIndex) {
                 setState(() {
                   selected = selectedIndex;

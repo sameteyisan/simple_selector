@@ -1,6 +1,6 @@
 name: simple_selector
 description: A simple and customizable selector widget with animated transition.
-version: 1.0.5
+version: 1.0.6
 homepage: https://github.com/sameteyisan/simple_selector.git
 
 environment:

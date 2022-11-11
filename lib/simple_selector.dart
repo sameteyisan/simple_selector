@@ -6,7 +6,7 @@ class SimpleSelector extends StatefulWidget {
   const SimpleSelector({
     Key? key,
     required this.items,
-    this.initialIndex = 0,
+    required this.selectedIndex,
     this.duration = const Duration(milliseconds: 300),
     this.curve,
     this.itemExtent = 50,
@@ -14,18 +14,17 @@ class SimpleSelector extends StatefulWidget {
     this.indicatorColor = const Color(0xff2980b9),
     this.backgroundColor = const Color(0xff1D1F22),
     this.radius = 12,
-    this.itemPadding,
-    this.mainAxisSize,
     this.onChanged,
     this.animation = true,
     this.itemAlign,
+    this.dense = false,
   }) : super(key: key);
 
   /// The items to be used in the selection are entered here.
   final List<Widget> items;
 
-  /// Use this to change your starting item
-  final int initialIndex;
+  /// Use this to change your selected item
+  final int selectedIndex;
 
   /// Use this to set the animation duration.
   final Duration duration;
@@ -48,12 +47,6 @@ class SimpleSelector extends StatefulWidget {
   /// Use this to change the radius.
   final double radius;
 
-  /// Use this to give padding to each of the items. This way you can leave space between items.
-  final EdgeInsets? itemPadding;
-
-  /// Use this to organize the space occupied by items horizontally.
-  final MainAxisSize? mainAxisSize;
-
   /// Use this to eliminate the animation transition altogether.
   final bool animation;
 
@@ -62,6 +55,9 @@ class SimpleSelector extends StatefulWidget {
 
   /// This function is used to see the selected index.
   final Function(int index)? onChanged;
+
+  /// If this is true, itemextent is ignored. It spreads to the area allocated to it on the screen.
+  final bool dense;
 
   @override
   State<SimpleSelector> createState() => _SimpleSelectorState();
@@ -72,29 +68,45 @@ class _SimpleSelectorState extends State<SimpleSelector> {
 
   @override
   void initState() {
-    offset = Offset(widget.initialIndex.toDouble(), 0);
+    offset = Offset(widget.selectedIndex.toDouble(), 0);
     super.initState();
   }
 
   @override
+  void didUpdateWidget(covariant SimpleSelector oldWidget) {
+    setState(() {
+      offset = Offset(widget.selectedIndex.toDouble(), 0);
+    });
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: widget.itemExtent * widget.items.length,
-      height: widget.height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(widget.radius),
-        color: widget.backgroundColor,
-      ),
-      child: Stack(
-        children: [
-          if (widget.items.isNotEmpty)
+    if (widget.selectedIndex >= widget.items.length ||
+        widget.selectedIndex < 0) {
+      throw "Array index out of bounds";
+    }
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        width: widget.dense
+            ? constraints.maxWidth
+            : widget.itemExtent * widget.items.length,
+        height: widget.height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(widget.radius),
+          color: widget.backgroundColor,
+        ),
+        child: Stack(
+          children: [
             AnimatedSlide(
               offset: offset,
               duration: widget.animation ? widget.duration : Duration.zero,
               curve: widget.curve ?? Curves.easeInOut,
               child: AnimatedContainer(
                 duration: widget.animation ? widget.duration : Duration.zero,
-                width: widget.itemExtent,
+                width: widget.dense
+                    ? constraints.maxWidth / widget.items.length
+                    : widget.itemExtent,
                 height: widget.height,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(widget.radius),
@@ -102,19 +114,18 @@ class _SimpleSelectorState extends State<SimpleSelector> {
                 ),
               ),
             ),
-          Row(
-            mainAxisSize: widget.mainAxisSize ?? MainAxisSize.max,
-            children: widget.items
-                .asMap()
-                .entries
-                .map(
-                  (kv) => Padding(
-                    padding: widget.itemPadding ?? EdgeInsets.zero,
-                    child: Stack(
+            Row(
+              children: widget.items
+                  .asMap()
+                  .entries
+                  .map(
+                    (kv) => Stack(
                       children: [
                         Container(
                           alignment: widget.itemAlign ?? Alignment.center,
-                          width: widget.itemExtent,
+                          width: widget.dense
+                              ? constraints.maxWidth / widget.items.length
+                              : widget.itemExtent,
                           height: widget.height,
                           child: kv.value,
                         ),
@@ -129,9 +140,7 @@ class _SimpleSelectorState extends State<SimpleSelector> {
                                 if (offset.dx == idxDouble) {
                                   return;
                                 }
-                                setState(() {
-                                  offset = Offset(idxDouble, 0);
-                                });
+
                                 if (widget.onChanged != null) {
                                   widget.onChanged!(kv.key);
                                 }
@@ -141,12 +150,12 @@ class _SimpleSelectorState extends State<SimpleSelector> {
                         ),
                       ],
                     ),
-                  ),
-                )
-                .toList(),
-          ),
-        ],
-      ),
-    );
+                  )
+                  .toList(),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

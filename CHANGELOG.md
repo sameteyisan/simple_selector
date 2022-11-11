@@ -21,3 +21,7 @@
 ## 1.0.5
 
 * Readme updated.
+
+## 1.0.6
+
+* Selected index came instead of initial index. Increased ease of use.
