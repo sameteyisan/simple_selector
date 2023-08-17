@@ -1,8 +1,8 @@
 ## Simple Selector
 
-![showcase](https://github.com/sameteyisan/simple_selector/blob/main/sample.gif)
+<img  src="https://github.com/sameteyisan/simple_selector/blob/main/sample.gif?raw=true">
 
-![showcase](https://github.com/sameteyisan/simple_selector/blob/main/sample_2.gif)
+<img  src="https://github.com/sameteyisan/simple_selector/blob/main/sample_2.gif?raw=true">
 
 A simple and customizable selector widget with animated transition.
 

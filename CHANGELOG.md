@@ -25,3 +25,7 @@
 ## 1.0.6
 
 * Selected index came instead of initial index. Dense added. Increased ease of use.
+
+## 1.0.7
+
+* Readme changed.
