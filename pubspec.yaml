@@ -1,10 +1,10 @@
 name: simple_selector
 description: A simple and customizable selector widget with animated transition.
-version: 1.0.7
+version: 1.0.8
 homepage: https://github.com/sameteyisan/simple_selector.git
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ^3.7.2
   flutter: ">=1.17.0"
 
 dependencies:

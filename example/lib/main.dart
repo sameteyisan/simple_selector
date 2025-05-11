@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
               indicatorColor: selected == 0
                   ? const Color(0xff2980b9)
-                  : const Color(0xff2980b9).withOpacity(0.5),
+                  : const Color(0xff2980b9).withValues(alpha: 0.5),
               itemExtent: 60,
               height: 35,
               onChanged: (selectedIndex) {
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
               indicatorColor: selected == 0
                   ? const Color(0xff2980b9)
-                  : const Color(0xff2980b9).withOpacity(0.6),
+                  : const Color(0xff2980b9).withValues(alpha: 0.6),
               itemExtent: 60,
               height: 35,
               onChanged: (selectedIndex) {

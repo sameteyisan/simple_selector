@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class SimpleSelector extends StatefulWidget {
   const SimpleSelector({
-    Key? key,
+    super.key,
     required this.items,
     required this.selectedIndex,
     this.duration = const Duration(milliseconds: 300),
@@ -18,7 +18,7 @@ class SimpleSelector extends StatefulWidget {
     this.animation = true,
     this.itemAlign,
     this.dense = false,
-  }) : super(key: key);
+  });
 
   /// The items to be used in the selection are entered here.
   final List<Widget> items;
